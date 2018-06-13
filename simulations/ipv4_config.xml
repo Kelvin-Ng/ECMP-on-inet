@@ -1,0 +1,46 @@
+<config>
+
+<interface hosts="client[0]" names="eth0" address="10.0.0.2" netmask="255.255.255.0"/>
+<interface hosts="client[1]" names="eth0" address="10.0.0.3" netmask="255.255.255.0"/>
+<interface hosts="client[2]" names="eth0" address="10.0.0.4" netmask="255.255.255.0"/>
+
+<interface hosts="router_client" names="eth0" address="10.0.0.1" netmask="255.255.255.0"/>
+<interface hosts="router_client" names="eth1" address="10.1.0.1" netmask="255.255.255.0"/>
+<interface hosts="router_client" names="eth2" address="10.2.0.1" netmask="255.255.255.0"/>
+
+<interface hosts="router_path_1" names="eth0" address="10.1.0.254" netmask="255.255.255.0"/>
+<interface hosts="router_path_1" names="eth1" address="10.1.1.254" netmask="255.255.255.0"/>
+
+<interface hosts="router_path_2" names="eth0" address="10.2.0.254" netmask="255.255.255.0"/>
+<interface hosts="router_path_2" names="eth1" address="10.2.1.254" netmask="255.255.255.0"/>
+
+<interface hosts="router_server" names="eth0" address="10.1.1.1" netmask="255.255.255.0"/>
+<interface hosts="router_server" names="eth1" address="10.2.1.1" netmask="255.255.255.0"/>
+<interface hosts="router_server" names="eth2" address="10.3.0.1" netmask="255.255.255.0"/>
+
+<interface hosts="server" names="eth0" address="10.3.0.2" netmask="255.255.255.0"/>
+
+
+
+
+<route hosts="client[*]" destination="10.3.0.0" gateway="10.0.0.1" netmask="255.255.255.0" interface="eth0" />
+
+<route hosts="router_client" destination="10.3.0.0" gateway="10.1.0.254" netmask="255.255.255.0" interface="eth1" />
+<route hosts="router_client" destination="10.3.0.0" gateway="10.2.0.254" netmask="255.255.255.0" interface="eth2" />
+
+<route hosts="router_path_1" destination="10.3.0.0" gateway="10.1.1.1" netmask="255.255.255.0" interface="eth1" />
+<route hosts="router_path_2" destination="10.3.0.0" gateway="10.2.1.1" netmask="255.255.255.0" interface="eth1" />
+
+
+
+
+
+<route hosts="server" destination="10.0.0.0" gateway="10.3.0.1" netmask="255.255.255.0" interface="eth0" />
+
+<route hosts="router_server" destination="10.0.0.0" gateway="10.1.1.254" netmask="255.255.255.0" interface="eth0" />
+<route hosts="router_server" destination="10.0.0.0" gateway="10.2.1.254" netmask="255.255.255.0" interface="eth1" />
+
+<route hosts="router_path_1" destination="10.0.0.0" gateway="10.1.0.1" netmask="255.255.255.0" interface="eth0" />
+<route hosts="router_path_2" destination="10.0.0.0" gateway="10.2.0.1" netmask="255.255.255.0" interface="eth0" />
+
+</config>
